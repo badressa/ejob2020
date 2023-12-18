@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="maincss/main.css">
+	<link rel="stylesheet" href="chart/chart.css">
+    <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.css">
+
+</head>
+<body>
+
+
+  <div id="demo">
+    <h2>The XMLHttpRequest Object</h2>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+          <nav class="navbar navbar-expand-lg navbar-light " style="padding: 0em;">
+ 
+  
+
+  <div  style="width: 75%;" class="" id="navbarTogglerDemo02">
+    <ul class=" navresp navbar-nav mr-auto mt-2 mt-lg-0" >
+      <li class="nav-item mr-auto navItem">
+        <a class="nav-link" href="#" >Home </a>
+      </li>
+      <li class="nav-item float-right navItem" >
+        <a class="nav-link" href="#">Linkaaa</a>
+      </li>
+      <li class="nav-item float-right navItem">
+        <a class="nav-link" href="#">Linkbbbb</a>
+      </li>
+      <li class="nav-item float-right navItem" >
+        <a class="nav-link" href="#">Linkcccc</a>
+      </li>
+      <li class="nav-item float-right navItem" >
+        <a class="nav-link" href="#">Linkdddd</a>
+      </li>
+      <li id='lkhr' style="position: absolute;
+      z-index: 1200;
+      color: red;
+      font-size: 2em;
+      right: 0;
+      padding: 0;
+      pointer-events: painted;" onmousemove="myFunction(event)" onmouseout="clearCoor(event)" >-></li>
+      <li id='lkhr' style="position: absolute;
+      z-index: 1200;
+      color: red;
+      font-size: 2em;
+      left: 0;
+      padding: 0;
+      pointer-events: painted;" onmousemove="myFunctionRev(event)" onmouseout="clearCoorRev(event)" > <- </li>
+     
+    </ul>
+</div>
+           </nav>    
+    
+     
+     
+
+    <div id='navCon' style="width: 100vw;">
+      <nav id='slideNav' style="position: relative;" >
+        <ul class="containerNav" id='containerN' style="overflow: scroll;"> 
+            <li >hahahaha 1</li>
+            <li >hahahaha 2</li>
+            <li >hahahaha 3</li>
+            <li >hahahaha 4</li>
+            <li id='lkhr' >hahahaha 5</li>
+            <li id='lkhr' style="position: absolute;
+            z-index: 1200;
+            color: red;
+            font-size: 2em;
+            right: 0;
+            padding: 0;
+            pointer-events: painted;" onmousemove="myFunction(event)" onmouseout="clearCoor(event)" >-></li>
+            <li id='lkhr' style="position: absolute;
+            z-index: 1200;
+            color: red;
+            font-size: 2em;
+            left: 0;
+            padding: 0;
+            pointer-events: painted;" onmousemove="myFunctionRev(event)" onmouseout="clearCoorRev(event)" > <- </li>
+        </ul>
+    </nav>
+    <div onmousemove="myFunction(event)" onmousedown="" onmouseout="clearCoor(event)"></div>
+    <p id="demo"></p>
+</div>
+
+
+
+
+
+
+
+
+    <style>
+        .containerNav{
+            display: flex;
+        }
+        .containerNav > li {
+            padding: 1em 2em;
+            list-style: none;
+            white-space: nowrap;
+        }
+        #lkhr{
+            color:red;
+        }
+        .containerNav::-webkit-scrollbar { width: 0 !important }
+        .containerNav { overflow: -moz-scrollbars-none; }
+        .containerNav { -ms-overflow-style: none; }
+    </style>
+
+    <script>
+        
+       let  slideNavWidth = document.querySelector('#containerN').getBoundingClientRect().right;
+       var navCon= document.querySelectorAll('#containerN > li');
+       
+        
+      for(let i=navCon.length-1 ;i>=0;i--){
+            if (slideNavWidth < navCon[i].getBoundingClientRect().right){
+                navCon[i].style.color='green';
+        }
+        
+
+        }
+        window.onresize = function(){
+            let  slideNavWidth = document.querySelector('#containerN').getBoundingClientRect().right;
+       var navCon= document.querySelectorAll('#containerN > li');
+       
+        
+      for(let i=navCon.length-1 ;i>=0;i--){
+            if (slideNavWidth < navCon[i].getBoundingClientRect().right){
+           navCon[i].style.color='green';
+        }else{
+           if(navCon[i].style.color=='green') {
+            navCon[i].style.color='';
+
+           };
+        }
+
+        }
+        }
+        function myFunction(e) {
+  var x = e.clientX;
+  let i=-5;
+  
+  var coor = "Coordinates: (" + x + ")";
+  document.getElementById("demo").innerHTML = coor;
+  marginalisation(i);
+  document.querySelector('#containerN').scrollBy(20, 0);
+  
+}
+function marginalisation(i){
+    document.querySelector('#containerN').style.marginRight=i+'px';
+    i--;
+}
+function clearCoor(e){
+    var x = e.clientX;
+  
+  var coor = "Coordinates: (" + x + ")";
+  document.getElementById("demo").innerHTML = coor;
+
+}
+function myFunctionRev(e) {
+  var x = e.clientX;
+  let i=-5;
+  
+  var coor = "Coordinates: (" + x + ")";
+  document.getElementById("demo").innerHTML = coor;
+  document.querySelector('#containerN').scrollBy(-20, 0);
+  
+}
+function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "ajaxing.txt", true);
+      xhttp.send();
+    }
+
+
+    </script>
+
+  
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src='chart/chart.min.js'></script>
+<script src='mainchart.js'></script>
+<script src='get.js'> </script>
+<script src='myPiechart.js'></script>
+</body>
+
+</html>
